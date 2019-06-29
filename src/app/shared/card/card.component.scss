@@ -7,9 +7,13 @@
     @include flexColumnCenter();
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+    position: relative;
+    padding: 1vh 1vw 1vh 1vw;
 }
 .hero-avatar-container {
     @include flexColumnCenter();
+    margin-left: 0;
+    margin-right: 0;
 }   
 .hero-avatar {
     border-radius: 50%;
@@ -23,27 +27,24 @@
     font-size: 1.2em;
 }
 .hero-card-description {
-    width: 50%;
+    width: 75%;
     tr {
         td:last-child{
             text-align: right;
         }
     }
 }
-.hero-card-star {
+.hero-card-star-favorite {
     color: gold;
-    font-size: 3em;
+    font-size: 1.6em;
+}
+.hero-card-star {
+    color: lightgray;
+    font-size: 1.6em;
 }
 .hero-favorite {
    position: absolute;
-   left: 0;
-   width: 8vh;
-   height: 8vh;
+   left: 1vh;
    background-color: transparent;
    border: none;  
-}
-.hero-favorite:hover {
-    background-color: transparent;
-    color: transparent;
- }
- 
+} 

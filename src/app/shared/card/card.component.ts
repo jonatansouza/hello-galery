@@ -13,9 +13,12 @@ export class CardComponent implements OnInit {
   ngOnInit() {
   }
   updateFavorite() {
-    console.log("update color")
+    this.hero.favorite = !this.hero.favorite;
   }
   formatField(property){
     return property === "null" ? "-" : property;
+  }
+  updateUrlImage(evt){
+    console.log("imagem nao encontrada");
   }
 }
