@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Hero } from './../interfaces/hero';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'hero-card',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-
+  @Input() hero: Hero
   constructor() { }
 
   ngOnInit() {
@@ -14,5 +15,7 @@ export class CardComponent implements OnInit {
   updateFavorite() {
     console.log("update color")
   }
- 
+  formatField(property){
+    return property === "null" ? "-" : property;
+  }
 }

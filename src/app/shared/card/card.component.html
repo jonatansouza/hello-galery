@@ -2,13 +2,34 @@
     <a class="hero-favorite" (click)="updateFavorite()">
         <fa name="fas fa-star" class="hero-card-star"></fa>
     </a>
-    <img class="hero-avatar" src="https://www.superherodb.com/pictures2/portraits/10/100/10060.jpg" alt="hero">
-    <div class="hero-card-description">
-        <span>
-            A-Bomb
-        </span>
-        <span>
-            3444
-        </span>
-    </div>
+    <figure *ngIf="hero && hero.image" class="hero-avatar-container">
+        <img class="hero-avatar" [src]="hero?.image.url" alt="hero">
+        <figcaption class="hero-avatar-label">{{hero.name}}</figcaption>
+    </figure>
+    <table *ngIf="hero && hero.powerstats" class="hero-card-description">
+        <tr>
+            <td>Poder</td>
+            <td>{{formatField(hero?.powerstats.power)}}</td>
+        </tr>
+        <tr>
+            <td>Força</td>
+            <td>{{formatField(hero?.powerstats.strength)}}</td>
+        </tr>
+        <tr>
+            <td>Combate</td>
+            <td>{{formatField(hero?.powerstats.combat)}}</td>
+        </tr>
+        <tr>
+            <td>Inteligência</td>
+            <td>{{formatField(hero.powerstats.intelligence)}}</td>
+        </tr>
+        <tr>
+            <td>Velocidade</td>
+            <td>{{formatField(hero?.powerstats.speed)}}</td>
+        </tr>
+        <tr>
+            <td>Resistencia</td>
+            <td>{{formatField(hero?.powerstats.durability)}}</td>
+        </tr>
+    </table>
 </div>
