@@ -1,3 +1,4 @@
+import { Hero } from './../interfaces/hero';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DropdownComponent implements OnInit {
   @Input() label: String;
+  @Input() heroes: Hero[] = [];
   private toggleDropdown: boolean;
   constructor() { }
 

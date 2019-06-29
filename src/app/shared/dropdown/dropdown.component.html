@@ -1,10 +1,10 @@
 <a class="hero-dropdown-header" (click)="openDropdown()">
-    <span>
+    <h3>
         {{label}}
-    </span>
+    </h3>
     <fa name="chevron-{{getDropdownIcon()}}"></fa>
 </a>
-<div class="hero-dropdown-container" *ngIf="toggleDropdown">
-    Conteudo
+<hr class="hero-dropdown-devider"> 
+<div class="hero-dropdown-container" *ngIf="!toggleDropdown">
+    <hero-card-deck [heroes]="heroes"></hero-card-deck>
 </div>
-<hero-card></hero-card>
