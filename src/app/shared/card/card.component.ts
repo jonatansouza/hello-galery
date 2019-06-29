@@ -21,4 +21,7 @@ export class CardComponent implements OnInit {
   updateUrlImage(evt){
     console.log("imagem nao encontrada");
   }
+  heroInformation() {
+    console.log("should go to information ===> ", this.hero.name)
+  }
 }

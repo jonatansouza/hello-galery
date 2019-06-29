@@ -36,15 +36,22 @@
 }
 .hero-card-star-favorite {
     color: gold;
-    font-size: 1.6em;
 }
 .hero-card-star {
     color: lightgray;
+}
+@mixin floatIcons {
+    position: absolute;
+    background-color: transparent;
+    border: none;    
     font-size: 1.6em;
 }
 .hero-favorite {
-   position: absolute;
-   left: 1vh;
-   background-color: transparent;
-   border: none;  
+    @include floatIcons();
+    left: 1vh;
+}
+.hero-information {
+    @include floatIcons();
+    right: 1vh;
+    color: #00ABE7
 } 

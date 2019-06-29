@@ -2,6 +2,9 @@
     <a class="hero-favorite" (click)="updateFavorite()">
         <fa name="fas fa-star" [class]="hero.favorite ? 'hero-card-star-favorite' : 'hero-card-star' "></fa>
     </a>
+    <a class="hero-information" (click)="heroInformation()">
+        <fa name="fas fa-info-circle"></fa>
+    </a>
     <figure *ngIf="hero && hero.image" class="hero-avatar-container">
         <img class="hero-avatar" [src]="hero?.image.url" alt="hero" (error)="updateUrlImage($event)">
         <figcaption class="hero-avatar-label">{{hero.name}}</figcaption>
