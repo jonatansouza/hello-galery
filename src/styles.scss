@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+/* light definitions color */
+$bgLight: gray;
+$txtLight: black;
+
+/* dark definitions color */
+$bgDark: black;
+$txtDark: white; 
+
+
+.theme-light {
+    background: $bgLight 
+}
+.theme-dark {
+    background: $bgLight;
+    color: white;
+}
