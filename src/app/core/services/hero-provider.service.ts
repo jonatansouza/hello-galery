@@ -1,3 +1,4 @@
+import { Hero } from './../../shared/interfaces/hero';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -12,7 +13,7 @@ export class HeroProviderService {
     this.apiUrl = environment.HERO_API.URL;
   }
 
-  public getHeroById(id: number): Observable<any>{
-    return this.http.get(this.apiUrl+environment.HERO_API.TOKEN+"/"+id);
+  public getHeroById(id: number): Observable<Hero>{
+    return this.http.get<Hero>(`${this.apiUrl}${environment.HERO_API.TOKEN}/${id}`);
   }
 }
