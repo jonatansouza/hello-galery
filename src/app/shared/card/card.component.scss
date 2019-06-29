@@ -1,0 +1,36 @@
+@mixin flexColumnCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hero-card-container {
+    @include flexColumnCenter();
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.hero-avatar {
+    border-radius: 50%;
+    margin: auto;
+    width: 10vh;
+    height: 10vh;
+}
+.hero-card-description {
+    @include flexColumnCenter();
+}
+.hero-card-star {
+    color: gold;
+    font-size: 3em;
+}
+.hero-favorite {
+   position: absolute;
+   left: 0;
+   width: 8vh;
+   height: 8vh;
+   background-color: transparent;
+   border: none;  
+}
+.hero-favorite:hover {
+    background-color: transparent;
+    color: transparent;
+ }
+ 

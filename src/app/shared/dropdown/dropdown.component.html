@@ -1,0 +1,10 @@
+<a class="hero-dropdown-header" (click)="openDropdown()">
+    <span>
+        {{label}}
+    </span>
+    <fa name="chevron-{{getDropdownIcon()}}"></fa>
+</a>
+<div class="hero-dropdown-container" *ngIf="toggleDropdown">
+    Conteudo
+</div>
+<hero-card></hero-card>
