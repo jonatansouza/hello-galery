@@ -1,6 +1,7 @@
 export interface Hero {
     name: string,
     power: number,
+    favorite?: boolean,
     appearance: {
         eyeColor: string,
         gender: string,
