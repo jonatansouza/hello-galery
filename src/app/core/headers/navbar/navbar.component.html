@@ -1,6 +1,18 @@
-<div id="hero-navbar" [class]="theme">
-    <span>Hero Gallery</span>
-    <div>
-        <fa name="cog"></fa>
+<div id="hero-navbar" [class]="theme.navbar">
+    <div class="hero-navbar-container">
+        <span>Hero Gallery</span>
+        <a class="hero-navbar-config" (click)="openConfig()">
+            <fa name="cog" animation="spin" *ngIf="rotateCog"></fa>
+            <fa name="cog" *ngIf="!rotateCog"></fa>
+        </a>
+    </div>
+    <div class="{{theme.buttons}} hero-theme-list" *ngIf="rotateCog">
+        <span class="hero-icon-container">
+            <a (click)="updateTheme(themes[0])" class="hero-theme-icon">
+            </a>
+            <a (click)="updateTheme(themes[1])" class="hero-theme-icon">
+            </a>
+        </span>
     </div>
 </div>
+<div class="{{theme?.general}} hero-clear-space"></div>

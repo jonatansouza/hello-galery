@@ -1,3 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<hero-navbar [theme]="theme"></hero-navbar>
-<router-outlet></router-outlet>
+<hero-navbar [theme]="theme" (updateThemeEvt)="updateTheme($event)"></hero-navbar>
+<div [class]="theme?.general">
+  <router-outlet></router-outlet>
+</div>

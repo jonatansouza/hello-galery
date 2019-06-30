@@ -1,10 +1,53 @@
-:root {
-    height: 19vh;
+$defaultNavSize: 7vh;
+#hero-navbar {
+    width: 100%;
+    height: $defaultNavSize;
     position: fixed;
     top: 0;
+    z-index: 999;
+    opacity: 0.9 !important;
 }
-#hero-navbar {
+.hero-navbar-container{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 2vh;
+}
+.hero-navbar-config {
+    font-size: 1.6em;
+}
+.hero-theme-list {
+    position: absolute;
+    right: 0;
+    top: $defaultNavSize;
+    width: 9vh;
+    padding: 1vh;
+}
+.hero-clear-space{
+    height: $defaultNavSize  + 2vh;
+    margin: 0;
+    padding: 0;
+}
+@mixin bgImage($img) {
+    background-image: url($img);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2em;
+}
+.hero-icon-container {
+    display: flex;
+    justify-content: space-around;
+    height: 3vh;
+    a { 
+        display: block;
+        width: 3vh;
+        height: 100%;
+        &:first-child {
+          @include bgImage("/assets/day.svg");
+          background-size: cover;
+        }
+        &:last-child {
+          @include bgImage("/assets/night.svg");
+        }
+    }
 }

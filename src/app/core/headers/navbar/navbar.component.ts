@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Theme } from './../../../shared/interfaces/theme';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { ThemeEnum } from 'src/app/shared/constants';
 
 @Component({
   selector: 'hero-navbar',
@@ -6,10 +8,24 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  @Input() theme: String;
+  @Input() theme: Theme;
+  @Output() updateThemeEvt = new EventEmitter<ThemeEnum>();
+  private themes = [
+    ThemeEnum.LIGHT,
+    ThemeEnum.DARK,
+  ]
+  private rotateCog: boolean;
   constructor() { }
 
   ngOnInit() {
   }
-
+  openConfig() {
+    this.rotateCog = !this.rotateCog;
+  }
+  getTheme(){
+    return `${this.theme.general} hero-navbar-theme` ;
+  }
+  updateTheme(newTheme) {
+    this.updateThemeEvt.emit(newTheme);
+  }
 }
