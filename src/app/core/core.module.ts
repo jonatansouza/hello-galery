@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './headers/navbar/navbar.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 const providers = [
   HeroProviderService
@@ -14,9 +15,10 @@ const providers = [
   imports: [
     CommonModule,
     HttpClientModule,
+    RouterModule,
     AngularFontAwesomeModule
   ],
-  exports: [NavbarComponent],
+  exports: [NavbarComponent, RouterModule],
   providers: providers
 })
 export class CoreModule { 

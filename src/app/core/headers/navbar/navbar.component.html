@@ -1,6 +1,6 @@
 <div id="hero-navbar" [class]="theme.navbar">
     <div class="hero-navbar-container">
-        <span>Hero Gallery</span>
+        <a [routerLink]="['']">Hero Gallery</a>
         <a class="hero-navbar-config" (click)="openConfig()">
             <fa name="cog" animation="spin" *ngIf="rotateCog"></fa>
             <fa name="cog" *ngIf="!rotateCog"></fa>
