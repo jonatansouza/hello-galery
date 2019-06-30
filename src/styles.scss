@@ -26,33 +26,43 @@ $txtDark: white;
 }
 .theme-light-buttons {
     background: $bgLightButtons;
-    color: $bgLightButtons;
+    color: $txtLight;
+    border-bottom: 2px solid $txtLight !important;
+}
+.theme-light-buttons:focus {
+    border-bottom: 2px solid $bgLightButtons !important;
 }
 .theme-light-card {
     background: $bgLightCard;
-    color: black;
+    color: $txtLight;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .theme-light-navbar {
     background: $bgLightButtons;
-    color: black;
+    color: $txtLight;
 }
 
 .theme-dark {
     background: $bgDark;
-    color: white;
+    color: $txtDark;
 }
 .theme-dark-buttons {
     background: $bgDarkButtons;
-    color: $bgDarkButtons;
+    color: $txtDark;
+    border-bottom: 2px solid $txtDark !important;
+}
+.theme-dark-buttons:focus {
+    border-bottom: 2px solid $bgDarkButtons !important;
 }
 .theme-dark-card {
     background: $bgDarkCard;
-    color: white;
+    color: $txtDark;
     box-shadow: 0 4px 8px 0 rgba(255,255,255,0.2);
 }
 .theme-dark-navbar {
     background: $bgDarkButtons;
     color: black;
 }
-
+.hero-clear {
+    height: 12vh;
+}
