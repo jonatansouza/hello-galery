@@ -11,12 +11,12 @@ import { Theme } from '../interfaces/theme';
 export class DropdownComponent implements OnInit {
   @Input() label: String;
   @Input() heroes: Hero[] = [];
-  private theme: Theme;
+  @Input() theme: Theme;
+  @Input() emptyContent: any = {};
   private toggleDropdown: boolean;
   constructor(private globalSettings: GlobalSettingsService) { }
 
   ngOnInit() {
-    this.theme = this.globalSettings.theme;
   }
   getDropdownIcon() {
     if(!this.toggleDropdown){

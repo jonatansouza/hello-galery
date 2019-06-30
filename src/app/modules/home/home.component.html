@@ -1,8 +1,8 @@
 <div class="{{theme?.general}}">
     <div class="hero-home-container">
-        <h1>Heróis e Vilões</h1>
         <div>
-            <hero-dropdown label="Favoritos" [heroes]="heroes" ></hero-dropdown>
+            <hero-dropdown label="Favoritos" [heroes]="favoriteHeroes" [emptyContent]="emptyFavorites"  ></hero-dropdown>
+            <hero-dropdown label="Sorte do dia" [heroes]="luckHeroes"  ></hero-dropdown>
         </div>
     </div>
 </div>
