@@ -6,7 +6,6 @@ import { Theme } from 'src/app/shared/interfaces/theme';
 import { environment } from 'src/environments/environment';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap, switchMap } from "rxjs/operators";
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'hero-home',
@@ -24,7 +23,7 @@ export class HomeComponent implements OnInit {
   private search:FormControl;
   constructor(
     private heroProvider: HeroProviderService,
-    private globalSettings: GlobalSettingsService  
+    private globalSettings: GlobalSettingsService
   ) { 
     this.N_HERO = environment.CONFIG.N_LUCK_HERO || 0;
   }
@@ -61,7 +60,9 @@ export class HomeComponent implements OnInit {
       hint: "Você pode adicionar favoritos clicando na estrela no canto superios direito da figurinha!"
     }  
   }
-
+  public cleanSearch(){
+    this.search.setValue("");
+  }
   public getLuckHeroes(){
     for(let i = 0; i < this.N_HERO ; i++) {
       this.heroProvider.getHeroRandon().subscribe((hero) => {

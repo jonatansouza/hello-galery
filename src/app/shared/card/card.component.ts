@@ -22,7 +22,5 @@ export class CardComponent implements OnInit {
   updateUrlImage(evt: any){
     this.hero.image.url = "assets/hero.png"
   }
-  heroInformation() {
-    console.log("should go to information ===> ", this.hero.name)
-  }
+  
 }

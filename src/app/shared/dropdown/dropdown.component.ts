@@ -13,10 +13,14 @@ export class DropdownComponent implements OnInit {
   @Input() heroes: Hero[] = [];
   @Input() theme: Theme;
   @Input() emptyContent: any = {};
+  @Input() startClosed: boolean;
   private toggleDropdown: boolean;
   constructor(private globalSettings: GlobalSettingsService) { }
 
   ngOnInit() {
+    if(this.startClosed) {
+      this.toggleDropdown = true;
+    }
   }
   getDropdownIcon() {
     if(!this.toggleDropdown){
