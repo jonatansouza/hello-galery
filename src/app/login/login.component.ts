@@ -1,3 +1,5 @@
+import { GlobalSettingsService } from './../core/services/global-settings.service';
+import { Theme } from 'src/app/shared/interfaces/theme';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  public theme: Theme;
+  constructor(private globalSettings: GlobalSettingsService) { }
 
   ngOnInit() {
+    this.theme = this.globalSettings.getTheme();
+    this.globalSettings.getThemeChanges().subscribe((t) => this.theme = t);
   }
 
 }
