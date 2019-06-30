@@ -9,7 +9,7 @@ import { ThemeEnum } from './shared/constants';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private theme: Theme;
+  public theme: Theme;
   constructor(private globalSettings: GlobalSettingsService){
 
   }

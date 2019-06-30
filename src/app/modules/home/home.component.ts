@@ -13,15 +13,15 @@ import { debounceTime, distinctUntilChanged, tap, switchMap } from "rxjs/operato
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private favoriteHeroes: Hero[] = [];
-  private emptyFavorites: any = {};
-  private luckHeroes: Hero[] = [];
-  private loadingLuckHeroes: boolean;
-  private loading: boolean;
-  private foundHeroes: Hero[] = [];
-  private theme: Theme;
-  private N_HERO;
-  private search:FormControl;
+  public favoriteHeroes: Hero[] = [];
+  public emptyFavorites: any = {};
+  public luckHeroes: Hero[] = [];
+  public loadingLuckHeroes: boolean;
+  public loading: boolean;
+  public foundHeroes: Hero[] = [];
+  public theme: Theme;
+  public N_HERO;
+  public search:FormControl;
   constructor(
     private heroProvider: HeroProviderService,
     private globalSettings: GlobalSettingsService

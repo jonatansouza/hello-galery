@@ -15,7 +15,7 @@ export class DropdownComponent implements OnInit {
   @Input() emptyContent: any = {};
   @Input() startClosed: boolean;
   @Input() loading: boolean;
-  private toggleDropdown: boolean;
+  public toggleDropdown: boolean;
   constructor(private globalSettings: GlobalSettingsService) { }
 
   ngOnInit() {

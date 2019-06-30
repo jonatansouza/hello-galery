@@ -10,11 +10,11 @@ import { ThemeEnum } from 'src/app/shared/constants';
 export class NavbarComponent implements OnInit {
   @Input() theme: Theme;
   @Output() updateThemeEvt = new EventEmitter<ThemeEnum>();
-  private themes = [
+  public themes = [
     ThemeEnum.LIGHT,
     ThemeEnum.DARK,
   ]
-  private rotateCog: boolean;
+  public rotateCog: boolean;
   constructor() { }
 
   ngOnInit() {
