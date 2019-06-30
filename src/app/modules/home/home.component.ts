@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
     this.emptyFavorites = {
       message: "Você ainda não possui favoritos!",
       icon: "smile",
-      hint: "Você pode adicionar favoritos clicando na estrela no canto superios direito da figurinha!"
+      hint: "Você pode adicionar favoritos clicando na estrela no canto superior esquerdo da figurinha!"
     }  
   }
   public fetchFavoriteHeroes(){
