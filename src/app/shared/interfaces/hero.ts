@@ -1,4 +1,5 @@
-export interface Hero {
+export interface Hero { 
+    id: string,
     name: string,
     power: number,
     favorite?: boolean,
