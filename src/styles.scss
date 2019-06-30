@@ -10,17 +10,49 @@ body {
     height: 100%;
 }
 /* light definitions color */
-$bgLight: #00ABE7;
+$bgLight: white;
+$bgLightButtons: #00ABE7;
+$bgLightCard: white; 
 $txtLight: black;
 
 /* dark definitions color */
 $bgDark: black;
+$bgDarkButtons: #00f260;
+$bgDarkCard: #363636;
 $txtDark: white; 
 
 .theme-light {
     background: $bgLight 
 }
+.theme-light-buttons {
+    background: $bgLightButtons;
+    color: $bgLightButtons;
+}
+.theme-light-card {
+    background: $bgLightCard;
+    color: black;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.theme-light-navbar {
+    background: $bgLightButtons;
+    color: black;
+}
+
 .theme-dark {
-    background: $bgLight;
+    background: $bgDark;
     color: white;
 }
+.theme-dark-buttons {
+    background: $bgDarkButtons;
+    color: $bgDarkButtons;
+}
+.theme-dark-card {
+    background: $bgDarkCard;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(255,255,255,0.2);
+}
+.theme-dark-navbar {
+    background: $bgDarkButtons;
+    color: black;
+}
+
