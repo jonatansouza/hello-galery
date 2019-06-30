@@ -1,5 +1,7 @@
+import { GlobalSettingsService } from './../../core/services/global-settings.service';
 import { Hero } from './../interfaces/hero';
 import { Component, OnInit, Input } from '@angular/core';
+import { Theme } from '../interfaces/theme';
 
 @Component({
   selector: 'hero-dropdown',
@@ -9,10 +11,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DropdownComponent implements OnInit {
   @Input() label: String;
   @Input() heroes: Hero[] = [];
+  private theme: Theme;
   private toggleDropdown: boolean;
-  constructor() { }
+  constructor(private globalSettings: GlobalSettingsService) { }
 
   ngOnInit() {
+    this.theme = this.globalSettings.theme;
   }
   getDropdownIcon() {
     if(!this.toggleDropdown){

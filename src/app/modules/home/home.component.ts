@@ -1,6 +1,8 @@
+import { GlobalSettingsService } from './../../core/services/global-settings.service';
 import { Hero } from './../../shared/interfaces/hero';
 import { HeroProviderService } from './../../core/services/hero-provider.service';
 import { Component, OnInit } from '@angular/core';
+import { Theme } from 'src/app/shared/interfaces/theme';
 
 @Component({
   selector: 'hero-home',
@@ -9,10 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   private heroes: Hero[] = [];
-  constructor(private heroProvider: HeroProviderService) { }
+  private theme: Theme;
+  constructor(
+    private heroProvider: HeroProviderService,
+    private globalSettings: GlobalSettingsService  
+  ) { }
 
   ngOnInit() {
-    const t = () => Math.floor(Math.random() * 731) + 1   
+    this.theme = this.globalSettings.getTheme();
+    this.globalSettings.getThemeChanges()
+      .subscribe((t) => this.theme = t);
+    const t = () => Math.floor(Math.random() * 731) + 1
     this.heroProvider.getHeroById(t()).subscribe((hero) => {
       this.heroes.push(hero);
     }, console.log);
@@ -28,17 +37,26 @@ export class HomeComponent implements OnInit {
     this.heroProvider.getHeroById(t()).subscribe((hero) => {
       this.heroes.push(hero);
     }, console.log);
-    setTimeout(() => {
-      this.heroProvider.getHeroById(t()).subscribe((hero) => {
-        this.heroes.push(hero);
-      }, console.log);
-      this.heroProvider.getHeroById(t()).subscribe((hero) => {
-        this.heroes.push(hero);
-      }, console.log);
-      this.heroProvider.getHeroById(t()).subscribe((hero) => {
-        this.heroes.push(hero);
-      }, console.log);
-      }, 5000)
+    this.heroProvider.getHeroById(t()).subscribe((hero) => {
+      this.heroes.push(hero);
+    }, console.log);
+    this.heroProvider.getHeroById(t()).subscribe((hero) => {
+      this.heroes.push(hero);
+    }, console.log);
+    this.heroProvider.getHeroById(t()).subscribe((hero) => {
+      this.heroes.push(hero);
+    }, console.log);
+    this.heroProvider.getHeroById(t()).subscribe((hero) => {
+      this.heroes.push(hero);
+    }, console.log);
+    this.heroProvider.getHeroById(t()).subscribe((hero) => {
+      this.heroes.push(hero);
+    }, console.log);
+    this.heroProvider.getHeroById(t()).subscribe((hero) => {
+      this.heroes.push(hero);
+    }, console.log);
+    this.heroProvider.getHeroById(t()).subscribe((hero) => {
+      this.heroes.push(hero);
+    }, console.log);
   }
-
 }

@@ -1,5 +1,7 @@
+import { GlobalSettingsService } from './../../core/services/global-settings.service';
 import { Hero } from './../interfaces/hero';
 import { Component, OnInit, Input } from '@angular/core';
+import { Theme } from '../interfaces/theme';
 
 @Component({
   selector: 'hero-card',
@@ -8,18 +10,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input() hero: Hero
-  constructor() { }
-
+  @Input() theme: Theme;
   ngOnInit() {
   }
   updateFavorite() {
     this.hero.favorite = !this.hero.favorite;
   }
-  formatField(property){
+  formatField(property: string){
     return property === "null" ? "-" : property;
   }
-  updateUrlImage(evt){
-    console.log("imagem nao encontrada");
+  updateUrlImage(evt: any){
+    this.hero.image.url = "assets/hero.png"
   }
   heroInformation() {
     console.log("should go to information ===> ", this.hero.name)
