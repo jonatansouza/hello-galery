@@ -1,15 +1,20 @@
 <div class="{{theme.general}} hero-login-container">
-    <div class="{{theme.card}} hero-login-box">
-        <h1>Bem Vindo a Galeria de Heróis</h1>
-        <button id="google-button">
+    <div class="{{theme.card}} hero-login-box" *ngIf="!loading">
+        <h1 *ngIf="!userLogged">Bem Vindo a Galeria de Heróis</h1>
+        <h1 *ngIf="userLogged">Bem Vindo de volta {{getUserName()}}</h1>
+        <button id="google-button" (click)="loginWithGoogle()" *ngIf="!userLogged">
             <fa name="google"></fa>
             <span>Login com Google</span>
         </button>
-        <button id="facebook-button">
+        <button id="facebook-button" (click)="loginWithFacebook()" *ngIf="!userLogged">
             <fa name="facebook"></fa>
             <span>
                 Login com Facebook
             </span>
         </button>
+        <button id="hero-gallery-button" class="{{theme.navbar}}" (click)="goToHome()">
+            Ir para Galeria
+        </button>
     </div>
+    <hero-loading label="Carregando Informaçoes de login" *ngIf="loading"></hero-loading>
 </div>
