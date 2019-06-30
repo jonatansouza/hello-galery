@@ -17,7 +17,7 @@ const declarations = [
     CommonModule,
     AngularFontAwesomeModule,
    ],
-  exports: declarations
+  exports: [...declarations, AngularFontAwesomeModule]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

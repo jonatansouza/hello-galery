@@ -1,8 +1,16 @@
 <div class="{{theme?.general}}">
-    <div class="hero-home-container">
-        <div>
-            <hero-dropdown label="Favoritos" [heroes]="favoriteHeroes" [emptyContent]="emptyFavorites"  ></hero-dropdown>
-            <hero-dropdown label="Sorte do dia" [heroes]="luckHeroes"  ></hero-dropdown>
-        </div>
+    <div class="hero-search-container">
+        <label for="hero-search">
+            <input placeholder="Exemplo: Batman" id="hero-search" type="text" [formControl]="search"/>
+        </label>
     </div>
+    <div class="hero-home-container">
+        <div class="hero-home-loading" *ngIf="loading">
+            <fa name="spinner" animation="spin"></fa>
+            <span>Procurando Herói...</span>
+        </div>
+        <hero-card-deck [heroes]="foundHeroes"></hero-card-deck>
+        <hero-dropdown label="Favoritos" [heroes]="favoriteHeroes" [emptyContent]="emptyFavorites"  ></hero-dropdown>
+        <hero-dropdown label="Sorte do dia" [heroes]="luckHeroes"  ></hero-dropdown>
+     </div>
 </div>
