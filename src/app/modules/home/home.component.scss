@@ -15,16 +15,13 @@
     font-family: inherit;
     font-size: 1.2em;
     width: 100%;
-    border-bottom: 2px solid black;
     text-align: center;
     &::-webkit-input-placeholder {
         font-size: 0.8em;
-        line-height: 3;
     }
 }
 #hero-search:focus{
     outline: none;
-    border-bottom: 2px solid blue;
 }
 .hero-search-container {
     width: 50%;
