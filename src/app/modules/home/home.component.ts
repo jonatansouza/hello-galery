@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   private favoriteHeroes: Hero[] = [];
   private emptyFavorites: any = {};
   private luckHeroes: Hero[] = [];
+  private loadingLuckHeroes: boolean;
   private loading: boolean;
   private foundHeroes: Hero[] = [];
   private theme: Theme;
@@ -46,13 +47,12 @@ export class HomeComponent implements OnInit {
         this.foundHeroes = <Hero[]> value.results;
         return;
       }
-      this.foundHeroes = [];
+      this.cleanFoundHeroes();
     })
-      
-    
     this.globalSettings.getThemeChanges()
       .subscribe((t) => this.theme = t);
-    this.getLuckHeroes();
+    this.fetchLuckHeroes();
+    this.fetchFavoriteHeroes();
     // get heroes from user preferencies
     this.emptyFavorites = {
       message: "Você ainda não possui favoritos!",
@@ -60,15 +60,23 @@ export class HomeComponent implements OnInit {
       hint: "Você pode adicionar favoritos clicando na estrela no canto superios direito da figurinha!"
     }  
   }
+  public fetchFavoriteHeroes(){
+    return this.favoriteHeroes;
+  }
   public cleanSearch(){
     this.search.setValue("");
+    this.cleanFoundHeroes();
   }
-  public getLuckHeroes(){
+  public cleanFoundHeroes(){
+    this.foundHeroes = [];
+  }
+  public fetchLuckHeroes(){
+    this.loadingLuckHeroes = true;
     for(let i = 0; i < this.N_HERO ; i++) {
       this.heroProvider.getHeroRandon().subscribe((hero) => {
+        this.loadingLuckHeroes = false;
         this.luckHeroes.push(hero)
       });
     }
   }
-
 }

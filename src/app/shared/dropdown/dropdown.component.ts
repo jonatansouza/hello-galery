@@ -14,6 +14,7 @@ export class DropdownComponent implements OnInit {
   @Input() theme: Theme;
   @Input() emptyContent: any = {};
   @Input() startClosed: boolean;
+  @Input() loading: boolean;
   private toggleDropdown: boolean;
   constructor(private globalSettings: GlobalSettingsService) { }
 

@@ -5,10 +5,7 @@
         </label>
     </div>
     <div class="hero-home-container">
-        <div class="hero-home-loading" *ngIf="loading">
-            <fa name="spinner" animation="spin"></fa>
-            <span>Procurando Herói...</span>
-        </div>
+        <hero-loading *ngIf="loading" label="Procurando Herói"></hero-loading>
         <div *ngIf="!loading && foundHeroes.length">
             <div class="hero-home-search-result">
                 <h3>
@@ -22,6 +19,6 @@
             <hero-card-deck [heroes]="foundHeroes"></hero-card-deck>
         </div>
         <hero-dropdown label="Favoritos" [heroes]="favoriteHeroes" [emptyContent]="emptyFavorites" startClosed="true"></hero-dropdown>
-        <hero-dropdown label="Sugestões do dia" [heroes]="luckHeroes"></hero-dropdown>
+        <hero-dropdown label="Sugestões do dia" [loading]="loadingLuckHeroes" [heroes]="luckHeroes"></hero-dropdown>
     </div>
 </div>

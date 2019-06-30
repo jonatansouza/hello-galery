@@ -1,3 +1,4 @@
+import { LoadingComponent } from './loading/loading.component';
 import { CardDeckComponent } from './card-deck/card-deck.component';
 import { CardComponent } from './card/card.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -9,6 +10,7 @@ const declarations = [
   DropdownComponent,
   CardComponent,
   CardDeckComponent,
+  LoadingComponent
 ]
 
 @NgModule({

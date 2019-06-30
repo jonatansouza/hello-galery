@@ -6,6 +6,7 @@
 </a>
 <hr class="hero-dropdown-devider"> 
 <div class="hero-dropdown-container" *ngIf="!toggleDropdown">
+    <hero-loading *ngIf="loading" label="Carregando {{label}}"></hero-loading>
     <hero-card-deck [heroes]="heroes" *ngIf="heroes.length"></hero-card-deck>
     <div *ngIf="!heroes.length" class="hero-empty-content">
         {{emptyContent?.message}}
