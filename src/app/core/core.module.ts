@@ -1,3 +1,4 @@
+import { LoginProviderService } from './services/login-provider.service';
 import { HeroProviderService } from './services/hero-provider.service';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,8 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 const providers = [
-  HeroProviderService
+  HeroProviderService,
+  LoginProviderService
 ]
 
 @NgModule({
