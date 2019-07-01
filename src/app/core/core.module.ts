@@ -1,3 +1,4 @@
+import { firebaseCredential } from './../../environments/firebase-credential';
 import { AuthGuard } from './auth.guard';
 import { LoginProviderService } from './services/login-provider.service';
 import { HeroProviderService } from './services/hero-provider.service';
@@ -25,7 +26,7 @@ const providers = [
     HttpClientModule,
     RouterModule,
     AngularFontAwesomeModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(firebaseCredential),
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence()
   ],
