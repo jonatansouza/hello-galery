@@ -20,7 +20,7 @@ export class LoginProviderService {
     return this.auth.user;
   }
   public getUser(){
-    return this.user;
+    return this.auth.user;
   }
 
   public loginWithGoogle(): void{
