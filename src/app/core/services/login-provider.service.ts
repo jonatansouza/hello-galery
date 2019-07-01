@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginProviderService {
-  private user;
+  private currentUser;
   constructor(private auth: AngularFireAuth,
               private router: Router) {
     this.auth.user.subscribe((user) => {
-      this.user = user;
+      this.currentUser = user;
     })
   }
 
@@ -22,7 +22,9 @@ export class LoginProviderService {
   public getUser(){
     return this.auth.user;
   }
-
+  public getUserId() {
+    return this.currentUser.email;
+  }
   public loginWithGoogle(): void{
     this.auth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }

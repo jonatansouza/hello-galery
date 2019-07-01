@@ -12,10 +12,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { StorageProviderService } from './services/storage-provider.service';
 
 const providers = [
   HeroProviderService,
   LoginProviderService,
+  StorageProviderService,
   AuthGuard
 ]
 
