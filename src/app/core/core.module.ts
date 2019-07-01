@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { LoginProviderService } from './services/login-provider.service';
 import { HeroProviderService } from './services/hero-provider.service';
 import { NgModule, ModuleWithProviders } from '@angular/core';
@@ -13,7 +14,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 const providers = [
   HeroProviderService,
-  LoginProviderService
+  LoginProviderService,
+  AuthGuard
 ]
 
 @NgModule({

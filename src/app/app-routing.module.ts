@@ -1,3 +1,4 @@
+import { AuthGuard } from './core/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { HomeModule } from './modules/home/home.module';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ const routes: Routes = [
   },
   {
     path: "home",
+    canLoad: [AuthGuard],
     loadChildren: () => import('./modules/home/home.module').then(mod => mod.HomeModule),
   }];
 
