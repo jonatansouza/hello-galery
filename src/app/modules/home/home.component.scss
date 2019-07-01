@@ -16,12 +16,14 @@
     font-size: 1.2em;
     width: 100%;
     text-align: center;
+    border-bottom: 2px solid; 
     &::-webkit-input-placeholder {
         font-size: 0.8em;
     }
 }
 #hero-search:focus{
     outline: none;
+    border-bottom: 2px solid;
 }
 .hero-search-container {
     width: 50%;

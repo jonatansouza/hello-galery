@@ -12,7 +12,7 @@
                 Login com Facebook
             </span>
         </button>
-        <button id="hero-gallery-button" class="{{theme.navbar}}" (click)="goToHome()">
+        <button id="hero-gallery-button" class="{{theme.navbar}}" (click)="goToHome()" *ngIf="userLogged">
             Ir para Galeria
         </button>
     </div>

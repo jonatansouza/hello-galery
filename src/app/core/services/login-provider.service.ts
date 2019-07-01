@@ -1,17 +1,26 @@
+import { Router } from '@angular/router';
 import { auth } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginProviderService {
-
-  constructor(private auth: AngularFireAuth) {
+  private user;
+  constructor(private auth: AngularFireAuth,
+              private router: Router) {
+    this.auth.user.subscribe((user) => {
+      this.user = user;
+    })
   }
 
-  public isLoggedIn(){
+  public isLoggedIn() {
     return this.auth.user;
+  }
+  public getUser(){
+    return this.user;
   }
 
   public loginWithGoogle(): void{
@@ -19,5 +28,8 @@ export class LoginProviderService {
   }
   public loginWithFacebook(): void {
     this.auth.auth.signInWithPopup(new auth.FacebookAuthProvider());
+  }
+  public handleLogin(){
+    this.router.navigate([""])
   }
 }

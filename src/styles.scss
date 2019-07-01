@@ -40,6 +40,7 @@ $txtDark: white;
 .theme-light-navbar {
     background: $bgLightButtons;
     color: $txtLight;
+    box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .theme-dark {
@@ -49,10 +50,10 @@ $txtDark: white;
 .theme-dark-buttons {
     background: $bgDarkButtons;
     color: $txtDark;
-    border-bottom: 2px solid $txtDark !important;
+    border-color: $txtDark !important;
 }
 .theme-dark-buttons:focus {
-    border-bottom: 2px solid $bgDarkButtons !important;
+    border-color: $bgDarkButtons !important;
 }
 .theme-dark-card {
     background: $bgDarkCard;
@@ -62,6 +63,7 @@ $txtDark: white;
 .theme-dark-navbar {
     background: $bgDarkButtons;
     color: black;
+    box-shadow: 0px 4px 4px 1px rgba(255, 255, 255, 0.2);
 }
 .hero-clear {
     height: 12vh;

@@ -1,4 +1,4 @@
-$defaultNavSize: 7vh;
+$defaultNavSize: 3em;
 #hero-navbar {
     width: 100%;
     height: $defaultNavSize;
@@ -6,6 +6,9 @@ $defaultNavSize: 7vh;
     top: 0;
     z-index: 999;
     opacity: 0.9 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     a {
         text-decoration: none;
         color: inherit;
@@ -23,14 +26,9 @@ $defaultNavSize: 7vh;
 .hero-theme-list {
     position: absolute;
     right: 0;
-    top: $defaultNavSize;
-    width: 9vh;
+    top: $defaultNavSize - 0.1em;
+    width: 5em;
     padding: 1vh;
-}
-.hero-clear-space{
-    height: $defaultNavSize  + 2vh;
-    margin: 0;
-    padding: 0;
 }
 @mixin bgImage($img) {
     background-image: url($img);

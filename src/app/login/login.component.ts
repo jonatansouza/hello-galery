@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.theme = this.globalSettings.getTheme();
     this.globalSettings.getThemeChanges().subscribe((t) => this.theme = t);
-    this.loginProvider.isLoggedIn().subscribe(r => {
+    this.loginProvider.getUser().subscribe(r => {
       this.loading = false;
       this.userLogged = !!r;
       this.user = r;
