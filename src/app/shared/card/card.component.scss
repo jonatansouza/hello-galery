@@ -48,6 +48,9 @@
     @include floatIcons();
     left: 1vh;
 }
+.hero-favorite:hover {
+    outline: none;
+}
 .hero-information {
     @include floatIcons();
     right: 1vh;
