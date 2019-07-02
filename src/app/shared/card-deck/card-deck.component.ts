@@ -10,7 +10,7 @@ import { Theme } from '../interfaces/theme';
 })
 export class CardDeckComponent implements OnInit {
   @Input() heroes: Hero[] = []
-  private theme: Theme;
+  public theme: Theme;
   constructor(private globalSettings: GlobalSettingsService) { }
 
   ngOnInit() {
