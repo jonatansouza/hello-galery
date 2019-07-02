@@ -29,8 +29,8 @@ $txtDark: white;
     color: $txtLight;
     border-bottom: 2px solid $txtLight !important;
 }
-.theme-light-buttons:focus {
-    border-bottom: 2px solid $bgLightButtons !important;
+.theme-light-buttons:focus, .theme-light-navbar::after {
+    border-color: $bgLightButtons !important;
 }
 .theme-light-card {
     background: $bgLightCard;
@@ -42,7 +42,6 @@ $txtDark: white;
     color: $txtLight;
     box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
-
 .theme-dark {
     background: $bgDark;
     color: $txtDark;
@@ -50,9 +49,8 @@ $txtDark: white;
 .theme-dark-buttons {
     background: $bgDarkButtons;
     color: $txtDark;
-    border-color: $txtDark !important;
 }
-.theme-dark-buttons:focus {
+.theme-dark-buttons:focus, .theme-dark-navbar::after {
     border-color: $bgDarkButtons !important;
 }
 .theme-dark-card {
@@ -64,6 +62,7 @@ $txtDark: white;
     background: $bgDarkButtons;
     color: black;
     box-shadow: 0px 4px 4px 1px rgba(255, 255, 255, 0.2);
+    border-color: $bgLightButtons !important
 }
 .hero-clear {
     height: 12vh;

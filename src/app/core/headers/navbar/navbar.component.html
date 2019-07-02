@@ -1,17 +1,39 @@
 <div id="hero-navbar" [class]="theme.navbar">
     <div class="hero-navbar-container">
         <a [routerLink]="['']">Hero Gallery</a>
-        <a class="hero-navbar-config" (click)="openConfig()">
-            <fa name="cog" animation="spin" *ngIf="rotateCog"></fa>
-            <fa name="cog" *ngIf="!rotateCog"></fa>
-        </a>
+        <div class="hero-navbar-config">
+            <div>
+                <a (click)="openConfig()">
+                    <fa name="cog" animation="spin" *ngIf="rotateCog"></fa>
+                    <fa name="cog" *ngIf="!rotateCog"></fa>
+                </a>
+                <div class="{{theme.navbar}} hero-user-options" [class.hero-theme-position]="(user$ | async)?.photoURL" [class.hero-speech-position]="!((user$ | async)?.photoURL)" *ngIf="rotateCog">
+                    <span class="hero-options-container">
+                        <a (click)="updateTheme(themes[0])" class="hero-theme-icon">
+                            <img src="assets/day.svg" alt="icon">
+                        </a>
+                        <a (click)="updateTheme(themes[1])" class="hero-theme-icon">
+                            <img src="assets/night.svg" alt="icon">
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div *ngIf="(user$ | async)?.photoURL">
+                <a (click)="openUserMenu()">
+                    <div class="hero-user-avatar">
+                        <img [src]="(user$ | async)?.photoURL" alt="">
+                    </div>
+                </a>
+                <div class="{{theme.navbar}} hero-user-options hero-speech-position" *ngIf="isOpenUserMenu">
+                    <span class="hero-options-container">
+                        <a (click)="logout()" class="hero-fix-font">
+                            Sair
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="{{theme.navbar}} hero-theme-list" *ngIf="rotateCog">
-        <span class="hero-icon-container">
-            <a (click)="updateTheme(themes[0])" class="hero-theme-icon">
-            </a>
-            <a (click)="updateTheme(themes[1])" class="hero-theme-icon">
-            </a>
-        </span>
-    </div>
+
+
 </div>

@@ -21,35 +21,66 @@ $defaultNavSize: 3em;
     padding: 2vh;
 }
 .hero-navbar-config {
-    font-size: 1.6em;
-}
-.hero-theme-list {
-    position: absolute;
-    right: 0;
-    top: $defaultNavSize - 0.1em;
-    width: 5em;
-    padding: 1vh;
-}
-@mixin bgImage($img) {
-    background-image: url($img);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 2em;
-}
-.hero-icon-container {
+    font-size: 2em;
     display: flex;
-    justify-content: space-around;
-    height: 3vh;
-    a { 
-        display: block;
-        width: 3vh;
-        height: 100%;
-        &:first-child {
-          @include bgImage("/assets/day.svg");
-          background-size: cover;
+    width: 20vw;
+    align-items: center;
+    justify-content: flex-end;
+    .hero-user-avatar {
+        margin-left: 2vw;
+        height: 1em;
+        width: 1em;
+        border-radius: 50%;
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
         }
-        &:last-child {
-          @include bgImage("/assets/night.svg");
+    }
+    .hero-user-options {
+        position: absolute;
+        top: $defaultNavSize - 1.2em;
+        width: 2.5em;
+        height: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &::after {
+            content: "";
+            position: absolute;
+            top: -0.3em;
+            right: 0;
+            width: 0; 
+            height: 0; 
+            border-left: 0.5em solid transparent !important;
+            border-right: 0.5em solid transparent !important;
+            border-bottom: 0.5em solid;
         }
+    }
+    .hero-options-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .hero-theme-icon {
+        width: 1em;
+        height: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            max-width: 80%;
+            min-width: 80%;
+            height: auto;
+        }
+    }
+    .hero-fix-font{
+        font-size: 0.5em;
+    }
+    .hero-theme-position {
+        right: 1.7em !important;
+    }
+    .hero-speech-position {
+        right: 0.4em !important;
     }
 }

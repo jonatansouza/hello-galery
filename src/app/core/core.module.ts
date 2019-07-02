@@ -3,7 +3,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginProviderService } from './services/login-provider.service';
 import { HeroProviderService } from './services/hero-provider.service';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NavbarComponent } from './headers/navbar/navbar.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +18,8 @@ const providers = [
   HeroProviderService,
   LoginProviderService,
   StorageProviderService,
-  AuthGuard
+  AuthGuard,
+  {provide: LocationStrategy, useClass: HashLocationStrategy}
 ]
 
 @NgModule({
