@@ -14,7 +14,7 @@ export class HeroProviderService {
   constructor(private http: HttpClient) {
     this.apiUrl = environment.HERO_API.URL;
     this.MAX_HERO_ID = environment.CONFIG.MAX_HERO_ID || 1;
-    this.url = `${this.apiUrl}${environment.HERO_API.TOKEN}/`
+    this.url = `${this.apiUrl}${environment.HERO_API.TOKEN}`
   }
 
   public getHeroById(id: string): Observable<Hero>{
