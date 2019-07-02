@@ -55,7 +55,8 @@ export class HomeComponent implements OnInit {
     this.globalSettings.getThemeChanges()
       .subscribe((t) => this.theme = t);
     this.fetchLuckHeroes();
-    this.fetchFavoriteHeroes();
+    this.fetchFavoriteHeros();
+    this.listenFavoriteHeroesChange();
     // get heroes from user preferencies
     this.emptyFavorites = {
       message: "Você ainda não possui favoritos!",
@@ -63,7 +64,18 @@ export class HomeComponent implements OnInit {
       hint: "Você pode adicionar favoritos clicando na estrela no canto superior esquerdo da figurinha!"
     }
   }
-  public fetchFavoriteHeroes() {
+  public fetchFavoriteHeros() {
+    this.loadingFavoriteHeroes = true;
+    this.storageProvider.fetchUserFavoritesHeros().subscribe(favorites => {
+      favorites.forEach(el => {
+        this.heroProvider.getHeroById(el).subscribe(hero => {
+          this.loadingFavoriteHeroes = false;
+          this.favoriteHeroes.push(hero);
+        })
+      })
+    })
+  }
+  public listenFavoriteHeroesChange() {
     this.loadingFavoriteHeroes = true;
     this.storageProvider.getUserFavorites().subscribe((favorites: string[]) => {
       if (this.favoriteHeroes.length === favorites.length) {
@@ -73,22 +85,17 @@ export class HomeComponent implements OnInit {
         this.removeFavorite(favorites);
         return;
       }
-      this.addFavorite(favorites)
+      this.addFavorite()
 
     })
     return this.favoriteHeroes;
   }
-  public addFavorite(favorites) {
-    const fh = this.favoriteHeroes.map(el => el.id);
-    let subArr = favorites.filter(el => !fh.includes(el));
-    subArr.forEach(element => {
-      this.heroProvider.getHeroById(element).subscribe((hero) => {
-        this.loadingFavoriteHeroes = false;
-        this.favoriteHeroes.push(hero)
-      });
-    });
+  public addFavorite() {
+    this.favoriteHeroes.push(...this.heroProvider.getCachedHero());
+    this.heroProvider.cleanCachedHero();
   }
-  public removeFavorite(favorites) {
+
+  public removeFavorite(favorites:string[]) {
     const fh = this.favoriteHeroes.map(el => el.id);
     let subArr = fh.filter(el => !favorites.includes(el));
     subArr.forEach(element => {

@@ -1,5 +1,5 @@
+import { HeroProviderService } from './../../core/services/hero-provider.service';
 import { StorageProviderService } from './../../core/services/storage-provider.service';
-import { GlobalSettingsService } from './../../core/services/global-settings.service';
 import { Hero } from './../interfaces/hero';
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Theme } from '../interfaces/theme';
@@ -15,7 +15,8 @@ export class CardComponent implements OnInit {
   @Output() updateHero: boolean;
   public disableBtn:boolean;
   private favoritesIds: string[];
-  constructor(private storageProvider :StorageProviderService) {
+  constructor(private storageProvider :StorageProviderService,
+              private heroProvider: HeroProviderService) {
     
   }
   ngOnInit() {
@@ -36,6 +37,7 @@ export class CardComponent implements OnInit {
       this.favoritesIds.splice(idx, 1);
     } else {
       this.favoritesIds.push(this.hero.id);
+      this.heroProvider.pushCacheHero(this.hero);
     }
     this.storageProvider.updateUserFavorites(this.favoritesIds)
       .finally(() => this.disableBtn = false)
