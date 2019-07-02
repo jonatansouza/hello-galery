@@ -1,3 +1,4 @@
+import { StorageProviderService } from './../../core/services/storage-provider.service';
 import { GlobalSettingsService } from './../../core/services/global-settings.service';
 import { Hero } from './../../shared/interfaces/hero';
 import { HeroProviderService } from './../../core/services/hero-provider.service';
@@ -14,6 +15,7 @@ import { debounceTime, distinctUntilChanged, tap, switchMap } from "rxjs/operato
 })
 export class HomeComponent implements OnInit {
   public favoriteHeroes: Hero[] = [];
+  public loadingFavoriteHeroes: boolean;
   public emptyFavorites: any = {};
   public luckHeroes: Hero[] = [];
   public loadingLuckHeroes: boolean;
@@ -21,14 +23,15 @@ export class HomeComponent implements OnInit {
   public foundHeroes: Hero[] = [];
   public theme: Theme;
   public N_HERO;
-  public search:FormControl;
+  public search: FormControl;
   constructor(
     private heroProvider: HeroProviderService,
-    private globalSettings: GlobalSettingsService
-  ) { 
+    private globalSettings: GlobalSettingsService,
+    private storageProvider: StorageProviderService
+  ) {
     this.N_HERO = environment.CONFIG.N_LUCK_HERO || 0;
   }
-  
+
   ngOnInit() {
     this.theme = this.globalSettings.getTheme();
     this.search = new FormControl("");
@@ -36,15 +39,15 @@ export class HomeComponent implements OnInit {
       debounceTime(700),
       distinctUntilChanged(),
       tap((value) => {
-        if(value){
+        if (value) {
           this.loading = true;
         }
       }),
-      switchMap((value:string) => this.heroProvider.searchHero(value))
+      switchMap((value: string) => this.heroProvider.searchHero(value))
     ).subscribe((value: any) => {
       this.loading = false;
-      if(value && value.results && value.results.length){
-        this.foundHeroes = <Hero[]> value.results;
+      if (value && value.results && value.results.length) {
+        this.foundHeroes = <Hero[]>value.results;
         return;
       }
       this.cleanFoundHeroes();
@@ -58,21 +61,52 @@ export class HomeComponent implements OnInit {
       message: "Você ainda não possui favoritos!",
       icon: "smile",
       hint: "Você pode adicionar favoritos clicando na estrela no canto superior esquerdo da figurinha!"
-    }  
+    }
   }
-  public fetchFavoriteHeroes(){
+  public fetchFavoriteHeroes() {
+    this.loadingFavoriteHeroes = true;
+    this.storageProvider.getUserFavorites().subscribe((favorites: string[]) => {
+      if (this.favoriteHeroes.length === favorites.length) {
+        return;
+      }
+      if (this.favoriteHeroes.length > favorites.length) {
+        this.removeFavorite(favorites);
+        return;
+      }
+      this.addFavorite(favorites)
+
+    })
     return this.favoriteHeroes;
   }
-  public cleanSearch(){
+  public addFavorite(favorites) {
+    const fh = this.favoriteHeroes.map(el => el.id);
+    let subArr = favorites.filter(el => !fh.includes(el));
+    subArr.forEach(element => {
+      this.heroProvider.getHeroById(element).subscribe((hero) => {
+        this.loadingFavoriteHeroes = false;
+        this.favoriteHeroes.push(hero)
+      });
+    });
+  }
+  public removeFavorite(favorites) {
+    const fh = this.favoriteHeroes.map(el => el.id);
+    let subArr = fh.filter(el => !favorites.includes(el));
+    subArr.forEach(element => {
+      const idx = fh.indexOf(element);
+      this.favoriteHeroes.splice(idx, 1);
+    });
+  }
+
+  public cleanSearch() {
     this.search.setValue("");
     this.cleanFoundHeroes();
   }
-  public cleanFoundHeroes(){
+  public cleanFoundHeroes() {
     this.foundHeroes = [];
   }
-  public fetchLuckHeroes(){
+  public fetchLuckHeroes() {
     this.loadingLuckHeroes = true;
-    for(let i = 0; i < this.N_HERO ; i++) {
+    for (let i = 0; i < this.N_HERO; i++) {
       this.heroProvider.getHeroRandon().subscribe((hero) => {
         this.loadingLuckHeroes = false;
         this.luckHeroes.push(hero)
