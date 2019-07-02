@@ -17,12 +17,12 @@ export class HeroProviderService {
     this.url = `${this.apiUrl}${environment.HERO_API.TOKEN}/`
   }
 
-  public getHeroById(id: number): Observable<Hero>{
+  public getHeroById(id: string): Observable<Hero>{
     return this.http.get<Hero>(`${this.url}/${id}`);
   }
   public getHeroRandon(){
     const t = () => Math.floor(Math.random() * this.MAX_HERO_ID) + 1;
-    return this.getHeroById(t());
+    return this.getHeroById(`${t()}`);
   }
   public searchHero(name: string) {
     return this.http.get<Hero>(`${this.url}/search/${name}`);
