@@ -43,6 +43,7 @@ $txtDark: white;
     box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 .theme-dark {
+    background-color: $bgDark;
     background: $bgDark;
     color: $txtDark;
 }
