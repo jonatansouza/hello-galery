@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HeroProviderService {
-  private MAX_HERO_ID :number;
+  private MAX_HERO_ID: number;
   private apiUrl: string;
   private url: string;
   private cachedHeroes: Hero[] = [];
@@ -18,20 +18,20 @@ export class HeroProviderService {
     this.url = `${this.apiUrl}${environment.HERO_API.TOKEN}`
   }
 
-  public getHeroById(id: string): Observable<Hero>{
+  public getHeroById(id: string): Observable<Hero> {
     return this.http.get<Hero>(`${this.url}/${id}`);
   }
-  public getHeroRandon(){
+  public getHeroRandon() {
     const t = () => Math.floor(Math.random() * this.MAX_HERO_ID) + 1;
     return this.getHeroById(`${t()}`);
   }
   public searchHero(name: string) {
     return this.http.get<Hero>(`${this.url}/search/${name}`);
   }
-  public pushCacheHero(hero: Hero){
+  public pushCacheHero(hero: Hero) {
     this.cachedHeroes.push(hero);
   }
-  public getCachedHero(): Hero[]{
+  public getCachedHero(): Hero[] {
     return this.cachedHeroes;
   }
   public cleanCachedHero() {

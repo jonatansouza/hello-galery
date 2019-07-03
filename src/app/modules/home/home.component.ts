@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   public foundHeroes: Hero[] = [];
   public theme: Theme;
   public N_HERO;
-  public search: FormControl;
+  public search = new FormControl("");
   constructor(
     private heroProvider: HeroProviderService,
     private globalSettings: GlobalSettingsService,
@@ -33,8 +33,27 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.init();
+  }
+  public init() {
     this.theme = this.globalSettings.getTheme();
-    this.search = new FormControl("");
+    this.globalSettings.getThemeChanges()
+      .subscribe((t) => this.theme = t);
+    this.createFormAndSubscribeEvents();
+
+    this.fetchLuckHeroes();
+    this.fetchFavoriteHeros();
+    
+    this.listenFavoriteHeroesChange();
+    
+    // get heroes from user preferencies
+    this.emptyFavorites = {
+      message: "Você ainda não possui favoritos!",
+      icon: "smile",
+      hint: "Você pode adicionar favoritos clicando na estrela no canto superior esquerdo da figurinha!"
+    }
+  }
+  public createFormAndSubscribeEvents() {
     this.search.valueChanges.pipe(
       debounceTime(700),
       distinctUntilChanged(),
@@ -52,17 +71,6 @@ export class HomeComponent implements OnInit {
       }
       this.cleanFoundHeroes();
     })
-    this.globalSettings.getThemeChanges()
-      .subscribe((t) => this.theme = t);
-    this.fetchLuckHeroes();
-    this.fetchFavoriteHeros();
-    this.listenFavoriteHeroesChange();
-    // get heroes from user preferencies
-    this.emptyFavorites = {
-      message: "Você ainda não possui favoritos!",
-      icon: "smile",
-      hint: "Você pode adicionar favoritos clicando na estrela no canto superior esquerdo da figurinha!"
-    }
   }
   public fetchFavoriteHeros() {
     this.loadingFavoriteHeroes = true;
@@ -119,5 +127,8 @@ export class HomeComponent implements OnInit {
         this.luckHeroes.push(hero)
       });
     }
+  }
+  public getInputClass(): string{
+    return this.theme ? this.theme.buttons : "";
   }
 }

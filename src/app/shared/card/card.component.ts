@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
   @Input() theme: Theme;
   @Output() updateHero: boolean;
   public disableBtn:boolean;
-  private favoritesIds: string[];
+  private favoritesIds: string[] = [];
   constructor(private storageProvider :StorageProviderService,
               private heroProvider: HeroProviderService) {
     
@@ -23,11 +23,13 @@ export class CardComponent implements OnInit {
     this.storageProvider.getUserFavorites()
       .subscribe((favorites) => {
         this.favoritesIds = favorites;
-        if(this.favoritesIds.includes(this.hero.id)){
-          this.hero.favorite = true;
-          return;
+        if(this.hero) {
+          if(this.favoritesIds.includes(this.hero.id)){
+            this.hero.favorite = true;
+            return;
+          }
+          this.hero.favorite = false;
         }
-        this.hero.favorite = false;
       })
   }
   updateFavorite() {
