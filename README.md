@@ -1,6 +1,26 @@
 # HeroGallery
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+Hero gallery is a cool app to find heroes and save as favorite.
+
+## Configuration
+
+This projects use Firebase to Autenticate the users with google and also use Cloud Firestore as database. To setup, go to firebase console, create a project and enable the authentication with google, and at database tab, enable the cloud firestore. 
+
+Create a file on `/src/environments/firebase-credentials.ts`, and add your firebase credentials with the follow sintax:
+
+```
+export const firebaseCredential = {
+    apiKey: "<your api key>",
+    authDomain: "<your auth domain>",
+    databaseURL: "<your database url>",
+    projectId: "<your project id>",
+    storageBucket: "",
+    messagingSenderId: "<your message sender id>",
+    appId: "your app id"
+}
+```
+
+The credentials above can be found on project configuration > general > your apps
 
 ## Development server
 
