@@ -25,6 +25,12 @@ export class HeroProviderServiceMock {
     pushCacheHero(hero: Hero){
         return;
     }
+    getCachedHero(){
+        return [];
+    }
+    cleanCachedHero() {
+        return;
+    }
 
 }
 export class LoginProviderServiceMock {

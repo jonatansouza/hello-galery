@@ -44,4 +44,13 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should add heros on favorites', () => {
+    spyOn(heroProvider, "getCachedHero").and.callThrough();
+    spyOn(heroProvider, "cleanCachedHero").and.callThrough();
+    spyOn(instance.favoriteHeroes, "push").and.callThrough();
+    instance.addFavorite();
+    expect(instance.favoriteHeroes.push).toHaveBeenCalled();
+    expect(heroProvider.getCachedHero).toHaveBeenCalled();
+    expect(heroProvider.cleanCachedHero).toHaveBeenCalled();
+  });
 });
