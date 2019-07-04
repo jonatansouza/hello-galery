@@ -1,0 +1,20 @@
+<a class="hero-dropdown-header" (click)="openDropdown()">
+    <h3>
+        {{label}}
+    </h3>
+    <fa name="chevron-{{getDropdownIcon()}}"></fa>
+</a>
+<hr class="hero-dropdown-devider"> 
+<div class="hero-dropdown-container" *ngIf="!toggleDropdown">
+    <hero-loading *ngIf="loading" label="Carregando {{label}}"></hero-loading>
+    <hero-card-deck [heroes]="heroes" *ngIf="heroes.length"></hero-card-deck>
+    <div *ngIf="!heroes.length" class="hero-empty-content">
+        {{emptyContent?.message}}
+        <span *ngIf="emptyContent.icon">
+            <fa name="{{emptyContent.icon}}"></fa>
+        </span>
+        <span class="hero-hint" *ngIf="emptyContent.hint">
+            {{emptyContent.hint}}
+        </span>
+    </div>
+</div>

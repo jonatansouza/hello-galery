@@ -1,0 +1,57 @@
+@mixin flexColumnCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hero-card-container {
+    @include flexColumnCenter();
+    position: relative;
+    padding: 1vh 1vw 1vh 1vw;
+}
+.hero-avatar-container {
+    @include flexColumnCenter();
+    margin-left: 0;
+    margin-right: 0;
+}   
+.hero-avatar {
+    border-radius: 50%;
+    margin: auto;
+    width: 10vh;
+    height: 10vh;
+}
+.hero-avatar-label {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.hero-card-description {
+    width: 75%;
+    tr {
+        td:last-child{
+            text-align: right;
+        }
+    }
+}
+.hero-card-star-favorite {
+    color: gold;
+}
+.hero-card-star {
+    color: lightgray;
+}
+@mixin floatIcons {
+    position: absolute;
+    background-color: transparent;
+    border: none;    
+    font-size: 1.6em;
+}
+.hero-favorite {
+    @include floatIcons();
+    left: 1vh;
+}
+.hero-favorite:hover {
+    outline: none;
+}
+.hero-information {
+    @include floatIcons();
+    right: 1vh;
+} 

@@ -1,0 +1,19 @@
+.hero-card-deck-wrapper {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+@media only screen and (max-width: 800px) {
+    .hero-card-deck-wrapper {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .hero-card-deck-wrapper {
+        display: grid;
+        grid-template-columns: 100%;
+    }
+}
+.hero-card-deck-container {
+    padding: 2vh;
+}

@@ -1,0 +1,19 @@
+.hero-dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hero-dropdown-devider {
+    margin: 0;
+    padding: 0;
+}
+.hero-empty-content {
+    display: flex;
+    flex-direction: column;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 1vh;
+    &>:last-child {
+        font-size: 0.8em;
+    }
+}

@@ -1,0 +1,25 @@
+<div class="{{theme?.general}}">
+    <div class="hero-clear"></div>
+    <div class="hero-search-container">
+        <label for="hero-search">
+            <input placeholder="Exemplo: Batman" id="hero-search" [class]="getInputClass()" type="text" [formControl]="search" />
+        </label>
+    </div>
+    <div class="hero-home-container">
+        <hero-loading *ngIf="loading" label="Procurando Herói"></hero-loading>
+        <div *ngIf="!loading && foundHeroes.length">
+            <div class="hero-home-search-result">
+                <h3>
+                    Resultado da Busca
+                </h3>
+                <a (click)="cleanSearch()">
+                    <fa name="chevron-up"></fa>   
+                </a>
+            </div>
+            <hr class="hero-home-devider"> 
+            <hero-card-deck [heroes]="foundHeroes"></hero-card-deck>
+        </div>
+        <hero-dropdown label="Favoritos" [heroes]="favoriteHeroes" [emptyContent]="emptyFavorites" startClosed="true"></hero-dropdown>
+        <hero-dropdown label="Sugestões do dia" [loading]="loadingLuckHeroes" [heroes]="luckHeroes"></hero-dropdown>
+    </div>
+</div>

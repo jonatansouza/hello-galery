@@ -1,0 +1,35 @@
+<div class="{{theme?.card}} hero-card-container" *ngIf="hero">
+    <button class="hero-favorite" (click)="updateFavorite()" [disabled]="disableBtn">
+        <fa name="fas fa-star" [class]="hero.favorite ? 'hero-card-star-favorite' : 'hero-card-star' "></fa>
+    </button>
+    <figure *ngIf="hero && hero.image" class="hero-avatar-container">
+        <img class="hero-avatar" [src]="hero.image.url" alt="hero" (error)="updateUrlImage($event)">
+        <figcaption class="hero-avatar-label">{{hero.name}}</figcaption>
+    </figure>
+    <table *ngIf="hero && hero.powerstats" class="hero-card-description">
+        <tr>
+            <td>Poder</td>
+            <td>{{formatField(hero?.powerstats.power)}}</td>
+        </tr>
+        <tr>
+            <td>Força</td>
+            <td>{{formatField(hero?.powerstats.strength)}}</td>
+        </tr>
+        <tr>
+            <td>Combate</td>
+            <td>{{formatField(hero?.powerstats.combat)}}</td>
+        </tr>
+        <tr>
+            <td>Inteligência</td>
+            <td>{{formatField(hero.powerstats.intelligence)}}</td>
+        </tr>
+        <tr>
+            <td>Velocidade</td>
+            <td>{{formatField(hero?.powerstats.speed)}}</td>
+        </tr>
+        <tr>
+            <td>Resistencia</td>
+            <td>{{formatField(hero?.powerstats.durability)}}</td>
+        </tr>
+    </table>
+</div>

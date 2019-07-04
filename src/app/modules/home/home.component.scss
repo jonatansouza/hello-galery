@@ -1,0 +1,50 @@
+.hero-home-container {
+  height: 100vh;
+  margin: 0vh 1vw 1vh 1vw;
+  h1 {
+      margin-top: 0;
+  }
+}
+#hero-search {
+    /* reset default styles */
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: inherit;
+    font-size: 1.2em;
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid; 
+    &::-webkit-input-placeholder {
+        font-size: 0.8em;
+    }
+}
+#hero-search:focus{
+    outline: none;
+    border-bottom: 2px solid;
+}
+.hero-search-container {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    span {
+        font-size: 0.8em;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .hero-search-container {
+        width: 75%;
+    }
+}
+.hero-home-search-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hero-home-devider {
+    margin: 0;
+    padding: 0;
+}
